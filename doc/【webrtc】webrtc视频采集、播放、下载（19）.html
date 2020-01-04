@@ -1,0 +1,783 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>【webrtc】webrtc视频采集、播放、下载（19） · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="【webrtc】webrtc采集屏幕数据，获取桌面（20）.html" />
+    
+    
+    <link rel="prev" href="【webrtc】webrtc录制基本知识（18）.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    webrtc Introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="【webrtc】背景、应用场景、涉及技术（1）.html">
+            
+                <a href="【webrtc】背景、应用场景、涉及技术（1）.html">
+            
+                    
+                    【webrtc】背景、应用场景、涉及技术(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="【webrtc】概述（2）.html">
+            
+                <a href="【webrtc】概述（2）.html">
+            
+                    
+                    【webrtc】概述（2）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="【webrtc】目录结构（3）.html">
+            
+                <a href="【webrtc】目录结构（3）.html">
+            
+                    
+                    【webrtc】目录结构（3）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="【webrtc】运行机制（4）.html">
+            
+                <a href="【webrtc】运行机制（4）.html">
+            
+                    
+                    【webrtc】运行机制（4）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.5" data-path="【webrtc】web服务工作原理（5）.html">
+            
+                <a href="【webrtc】web服务工作原理（5）.html">
+            
+                    
+                    【webrtc】web服务工作原理（5）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.6" data-path="【webrtc】最简单的http服务创建_nodejs（6）.html">
+            
+                <a href="【webrtc】最简单的http服务创建_nodejs（6）.html">
+            
+                    
+                    【webrtc】最简单的http服务创建_nodejs（6）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.7" data-path="【webrtc】创建https服务（7）.html">
+            
+                <a href="【webrtc】创建https服务（7）.html">
+            
+                    
+                    【webrtc】创建https服务（7）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.8" data-path="【webrtc】web服务（8）.html">
+            
+                <a href="【webrtc】web服务（8）.html">
+            
+                    
+                    【webrtc】web服务（8）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.9" data-path="【webrtc】webrtc中音视频设备管理（9）.html">
+            
+                <a href="【webrtc】webrtc中音视频设备管理（9）.html">
+            
+                    
+                    【webrtc】webrtc中音视频设备管理（9）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.10" data-path="【webrtc】webrtc中音视频数据采集（10）.html">
+            
+                <a href="【webrtc】webrtc中音视频数据采集（10）.html">
+            
+                    
+                    【webrtc】webrtc中音视频数据采集（10）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.11" data-path="【webrtc】getUserMedia不同浏览器适配（11）.html">
+            
+                <a href="【webrtc】getUserMedia不同浏览器适配（11）.html">
+            
+                    
+                    【webrtc】getUserMedia不同浏览器适配（11）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.12" data-path="【webrtc】获取设备权限（12）.html">
+            
+                <a href="【webrtc】获取设备权限（12）.html">
+            
+                    
+                    【webrtc】获取设备权限（12）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.13" data-path="【webrtc】视频参数的调整（13）.html">
+            
+                <a href="【webrtc】视频参数的调整（13）.html">
+            
+                    
+                    【webrtc】视频参数的调整（13）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.14" data-path="【webrtc】音频参数的调整（14）.html">
+            
+                <a href="【webrtc】音频参数的调整（14）.html">
+            
+                    
+                    【webrtc】音频参数的调整（14）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.15" data-path="【webrtc】视频特效的添加（15）.html">
+            
+                <a href="【webrtc】视频特效的添加（15）.html">
+            
+                    
+                    【webrtc】视频特效的添加（15）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.16" data-path="【webrtc】从视频中获取图片（16）.html">
+            
+                <a href="【webrtc】从视频中获取图片（16）.html">
+            
+                    
+                    【webrtc】从视频中获取图片（16）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.17" data-path="【webrtc】mediastream（17）.html">
+            
+                <a href="【webrtc】mediastream（17）.html">
+            
+                    
+                    【webrtc】mediastream（17）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.18" data-path="【webrtc】webrtc录制基本知识（18）.html">
+            
+                <a href="【webrtc】webrtc录制基本知识（18）.html">
+            
+                    
+                    【webrtc】webrtc录制基本知识（18）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.1.19" data-path="【webrtc】webrtc视频采集、播放、下载（19）.html">
+            
+                <a href="【webrtc】webrtc视频采集、播放、下载（19）.html">
+            
+                    
+                    【webrtc】webrtc视频采集、播放、下载（19）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.20" data-path="【webrtc】webrtc采集屏幕数据，获取桌面（20）.html">
+            
+                <a href="【webrtc】webrtc采集屏幕数据，获取桌面（20）.html">
+            
+                    
+                    【webrtc】webrtc采集屏幕数据，获取桌面（20）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.21" data-path="【webrtc】webrtc信令服务器的作用（21）.html">
+            
+                <a href="【webrtc】webrtc信令服务器的作用（21）.html">
+            
+                    
+                    【webrtc】webrtc信令服务器的作用（21）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.22" data-path="【webrtc】webrtc网络传输基本知识（22）.html">
+            
+                <a href="【webrtc】webrtc网络传输基本知识（22）.html">
+            
+                    
+                    【webrtc】webrtc网络传输基本知识（22）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.23" data-path="【webrtc】STUN协议（23）.html">
+            
+                <a href="【webrtc】STUN协议（23）.html">
+            
+                    
+                    【webrtc】STUN协议（23）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.24" data-path="【webrtc】媒体协商的过程（24）.html">
+            
+                <a href="【webrtc】媒体协商的过程（24）.html">
+            
+                    
+                    【webrtc】媒体协商的过程（24）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.25" data-path="【webrtc】webrtc通过peerconnection进行音视频互通（25）.html">
+            
+                <a href="【webrtc】webrtc通过peerconnection进行音视频互通（25）.html">
+            
+                    
+                    【webrtc】webrtc通过peerconnection进行音视频互通（25）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.26" data-path="【webrtc】SDP（26）.html">
+            
+                <a href="【webrtc】SDP（26）.html">
+            
+                    
+                    【webrtc】SDP（26）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.27" data-path="【webrtc】coturn服务搭建（27）.html">
+            
+                <a href="【webrtc】coturn服务搭建（27）.html">
+            
+                    
+                    【webrtc】coturn服务搭建（27）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.28" data-path="【webrtc】PTCPeerConnection（28）.html">
+            
+                <a href="【webrtc】PTCPeerConnection（28）.html">
+            
+                    
+                    【webrtc】PTCPeerConnection（28）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.29" data-path="【webrtc】PTCPeerConnection（29）.html">
+            
+                <a href="【webrtc】PTCPeerConnection（29）.html">
+            
+                    
+                    【webrtc】PTCPeerConnection（29）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.30" data-path="【webrtc】客户状态机及处理逻辑（30）.html">
+            
+                <a href="【webrtc】客户状态机及处理逻辑（30）.html">
+            
+                    
+                    【webrtc】客户状态机及处理逻辑（30）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.31" data-path="【webrtc】传输速率的控制（31）.html">
+            
+                <a href="【webrtc】传输速率的控制（31）.html">
+            
+                    
+                    【webrtc】传输速率的控制（31）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.32" data-path="【webrtc】RTP-SRTP（32）.html">
+            
+                <a href="【webrtc】RTP-SRTP（32）.html">
+            
+                    
+                    【webrtc】RTP-SRTP（32）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >【webrtc】webrtc视频采集、播放、下载（19）</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x3010;webrtc&#x3011;webrtc&#x89C6;&#x9891;&#x91C7;&#x96C6;&#x3001;&#x64AD;&#x653E;&#x3001;&#x4E0B;&#x8F7D;&#xFF08;19&#xFF09;">&#x3010;webrtc&#x3011;webrtc&#x89C6;&#x9891;&#x91C7;&#x96C6;&#x3001;&#x64AD;&#x653E;&#x3001;&#x4E0B;&#x8F7D;&#xFF08;19&#xFF09;</h1>
+<blockquote>
+<p>webrtc&#x8FD8;&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x6709;&#x610F;&#x601D;&#x7684;&#x4E1C;&#x897F;&#x3002;&#x6015;&#x5FD8;&#x8BB0;&#xFF0C;&#x7B80;&#x5355;&#x8BB0;&#x5F55;&#x4E00;&#x4E0B;webrtc&#x91C7;&#x96C6;&#x6570;&#x636E;&#x548C;&#x64AD;&#x653E;&#x4E0B;&#x8F7D;&#x6570;&#x636E;&#x5427;&#xFF01;</p>
+</blockquote>
+<h5 id="step1&#x83B7;&#x53D6;&#x8FDE;&#x63A5;&#x7684;&#x8BBE;&#x5907;&#xFF0C;&#x83B7;&#x53D6;&#x97F3;&#x89C6;&#x9891;&#x6D41;">Step1:&#x83B7;&#x53D6;&#x8FDE;&#x63A5;&#x7684;&#x8BBE;&#x5907;&#xFF0C;&#x83B7;&#x53D6;&#x97F3;&#x89C6;&#x9891;&#x6D41;</h5>
+<pre><code class="lang-shell">function start(){
+    if( !navigator.mediaDevices || !navigator.mediaDevices.getUserMedia ){
+        console.log(&apos;getUserMedia is not support!&apos;);
+        return;
+    }else{
+        var deviceId = videoSource.value;   //&#x83B7;&#x53D6;&#x8BBE;&#x5907;ID&#xFF1B;&#x7528;&#x4E8E;&#x5F53;&#x8BBE;&#x5907;&#x9009;&#x62E9;&#x6539;&#x53D8;&#x7684;&#x65F6;&#x5019;&#x6539;&#x53D8;&#x8BBE;&#x5907;
+        var constraints = {
+            video : {
+                width:640,
+                height:480,
+                frameRate:30,    //&#x5E27;&#x7387;
+                facingMode:&apos;enviroment&apos;,    //facingMode&#x6444;&#x50CF;&#x5934;&#x7684;q&#x524D;&#x7F6E;&#x8FD8;&#x662F;&#x540E;&#x7F6E;&#x7684;&#x8BBE;&#x7F6E;
+                deviceId:deviceId ? deviceId :undefined
+            },
+            audio : {
+                noiseSupression:true,   //&#x964D;&#x566A;
+                echoCancellation:true,  //&#x56DE;&#x97F3;&#x6D88;&#x9664;&#x8BBE;&#x7F6E;&#x6210;true
+            },
+
+        }
+        navigator.mediaDevices.getUserMedia(constraints)
+        .then(gotMediaStream)   //&#x83B7;&#x53D6;&#x6D41;
+        .then(gotDevices)       //&#x8BBE;&#x5907;&#x83B7;&#x53D6;&#x5904;&#x7406;
+        .catch(handleError);
+    }
+}
+start();
+
+function gotDevices(deviceInfos) {      //&#x53C2;&#x6570;deviceInfos&#x662F;&#x8BBE;&#x5907;&#x4FE1;&#x606F;&#x7684;&#x6570;&#x7EC4;
+    deviceInfos.forEach((deviceInfo) =&gt; {
+        console.log(deviceInfo.kind + &apos;:label = &apos; + deviceInfo.label + &apos;:id = &apos; + deviceInfo.deviceId + &apos;:groupId = &apos; + deviceInfo.groupId);
+        var option = document.createElement(&apos;option&apos;);
+        option.value = deviceInfo.deviceId;
+        option.text = deviceInfo.label;
+        if(deviceInfo.kind === &apos;audioinput&apos;){       //deviceInfo.kind&#x6765;&#x5224;&#x65AD;&#x79CD;&#x7C7B;;&#x97F3;&#x9891;
+            audioSource.appendChild(option);
+        }else if(deviceInfo.kind === &apos;audiooutput&apos;){        //&#x97F3;&#x9891;&#x8F93;&#x51FA;
+            audioOutput.appendChild(option);
+        }else if(deviceInfo.kind === &apos;videoinput&apos; ){           //&#x89C6;&#x9891;
+            videoSource.appendChild(option);
+        }
+
+    });
+}
+
+//&#x83B7;&#x53D6;&#x5230;&#x6D41;
+function gotMediaStream (stream){
+    var videoTrack = stream.getVideoTracks()[0];//&#x7372;&#x53D6;&#x8996;&#x983B;track&#xFF1B;&#x8FD9;&#x91CC;&#x53D6;&#x7B2C;&#x4E00;&#x500B;
+    var videoConstraints =  videoTrack.getSettings();//&#x9019;&#x88CF;&#x62FF;&#x5230;video&#x6240;&#x6709;&#x7684;&#x7D04;&#x675F;
+
+    divConstraints.textContent = JSON.stringify(videoConstraints,null,2)//&#x8F49;&#x6210;JSON&#xFF0C;&#x7B2C;&#x4E00;&#x500B;&#x53C3;&#x6578;&#x662F;&#x7D04;&#x675F;&#xFF0C;&#x7B2C;&#x4E8C;&#x500B;&#x53C3;&#x6578;null&#xFF0C;&#x7B2C;&#x4E09;&#x500B;&#x53C3;&#x6578;&#x662F;&#x7E2E;&#x9032;&#x7684;&#x7A7A;&#x683C;
+
+    window.stream = stream;//&#x6302;&#x8F7D;&#x5230;&#x5168;&#x5C40;&#xFF1B;&#x65B9;&#x4FBF;&#x8C03;&#x7528;
+    videoplay.srcObject = stream;
+
+    return navigator.mediaDevices.enumerateDevices();   //&#x6210;&#x529F;&#x83B7;&#x53D6;&#x6D41;&#xFF1B;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;promise&#xFF1B;&#x7528;&#x4E8E;&#x540E;&#x8FB9;&#x5BF9;&#x8BBE;&#x5907;&#x7684;&#x5224;&#x65AD;
+}
+
+//&#x9519;&#x8BEF;&#x5904;&#x7406;
+function handleError (err){
+    console.log(err);
+}
+</code></pre>
+<blockquote>
+<p>&#x6CE8;&#x610F;&#xFF1A;&#x8FD9;&#x91CC;&#x9762;&#x7684;<code>navigator</code>&#x662F;&#x7CFB;&#x7EDF;&#x81EA;&#x5E26;&#x7684;&#x63A5;&#x53E3;&#xFF1B;&#x53EF;&#x4EE5;&#x62FF;&#x5230;&#x8FDE;&#x63A5;&#x7684;&#x8BBE;&#x5907;&#x4FE1;&#x606F;</p>
+<h5 id="step2&#x5F00;&#x59CB;&#x5F55;&#x5236;">Step2:&#x5F00;&#x59CB;&#x5F55;&#x5236;</h5>
+<pre><code class="lang-shell">btnRecord.onclick = () =&gt; {
+    if(btnRecord.textContent === &apos;Start Record&apos;){
+        startRecord();
+        btnRecord.textContent = &apos;Stop Record&apos;;
+        btnPlay.disabled = true;
+        btnDownload.disabled = true;
+    }else{
+        stopRecord();
+        btnRecord.textContent = &apos;Start Record&apos;;
+        btnPlay.disabled = false;
+        btnDownload.disabled = false;
+    }
+}
+function startRecord(){
+    buffer = [];//&#x5B9A;&#x7FA9;buffer&#x7232;&#x4E00;&#x500B;&#x6578;&#x7D44;
+    var options = {
+        mimType:&apos;video/webm;codecs=vp8&apos;//&#x97F3;&#x983B;&#x8996;&#x983B;&#x540C;&#x6642;&#x6709;&#x7684;&#x6642;&#x5019;&#x662F;video&#x53EA;&#x6709;&#x97F3;&#x983B;&#x7684;&#x6642;&#x5019;&#x662F;audio
+    } 
+    if(!MediaRecorder.isTypeSupported(options.mimType)){//&#x9019;&#x88CF;&#x9032;&#x884C;&#x6AA2;&#x9A57;&#x9019;&#x500B;mimType&#x662F;&#x5426;&#x652F;&#x6301;
+        console.error(`${options.mimType} is not supported!`)
+        return;
+    }
+    try{
+        mediaRecorder = new MediaRecorder(window.stream,options);
+    }catch(e){
+        console.log(&apos;Failed to create MediaRecorder,e&apos;)
+        return;
+    }
+    mediaRecorder.ondataavailable = handleDataAvailable;//&#x6578;&#x64DA;&#x6709;&#x6548;&#x6642;&#x5019;&#x7684;&#x8655;&#x7406;
+    mediaRecorder.start(10);//&#x50B3;&#x5165;&#x6642;&#x9593;&#x7247;&#xFF0C;&#x6BCF;&#x9694;&#x9019;&#x500B;&#x6642;&#x9593;&#x7247;&#x5B58;&#x5132;&#x4E00;&#x6B21;&#x6578;&#x64DA;
+}
+function stopRecord(){
+    mediaRecorder.stop();
+}
+function handleDataAvailable(e){
+    if(e &amp;&amp; e.data &amp;&amp; e.data.size&gt;0){
+        buffer.push(e.data)
+    }
+}
+</code></pre>
+<p>&#x5199;&#x597D;&#x76F8;&#x5173;button&#x7684;&#x4E8B;&#x4EF6;&#xFF0C;btnRecord&#x662F;&#x6307;&#x5F00;&#x59CB;&#x5F55;&#x5236;&#x7684;&#x4E00;&#x4E2A;<code>button</code>&#x3002;&#x5728;<code>startRecord</code>&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x521D;&#x59CB;&#x5316;<code>buffer</code>&#x6570;&#x7EC4;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x91C7;&#x96C6;&#x7684;&#x6570;&#x636E;&#x3002;&#x521D;&#x59CB;&#x5316;<code>mediaRecorder = new MediaRecorder(window.stream,options)</code>&#xFF0C;&#x5728;mediaRecorder&#x7684;ondataavailable&#x6570;&#x636E;&#x6709;&#x6548;&#x65F6;&#x5019;&#x5904;&#x7406;&#xFF0C;handleDataAvailable&#x65B9;&#x6CD5;&#x5C06;&#x6570;&#x636E;push&#x5230;buffer&#x4E2D;<code>buffer.push(e.data)</code>&#x3002;&#x70B9;&#x51FB;&#x505C;&#x6B62;&#x5F55;&#x5236;&#x4E4B;&#x540E;&#xFF0C;&#x8C03;&#x7528;<code>stopRecord</code>&#x65B9;&#x6CD5;&#x505C;&#x6B62;&#x5F55;&#x5236;&#x3002;&#x4E4B;&#x540E;<code>btnPlay</code>&#x70B9;&#x51FB;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x5904;&#x7406;buffer&#x5BF9;&#x8C61;&#x7684;<code>Blob</code>&#xFF0C;&#x5C06;&#x5B58;&#x50A8;&#x5728;<code>buffer</code>&#x4E2D;&#x7684;&#x6570;&#x636E;&#x8F6C;&#x6362;&#x6210;<code>Blob</code>&#x4E4B;&#x540E;&#xFF0C;&#x7528;<code>window.URL</code>&#x521B;&#x5EFA;&#x4E00;&#x4E2A;url&#x5C06;video&#x6807;&#x7B7E;&#x7684;src&#x6307;&#x5411;&#x5B83;<code>recvideo.src = window.URL.createObjectURL(blob)</code>&#xFF0C;&#x5E76;&#x4E14;<code>recvideo.controls = true</code>&#x63A7;&#x5236;&#x64AD;&#x653E;&#xFF0C;&#x7528;<code>play()</code>&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x64AD;&#x653E;&#x3002;&#x6B64;&#x65F6;&#x5C31;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;webrtc&#x7684;&#x6570;&#x636E;&#x91C7;&#x96C6;&#x548C;&#x64AD;&#x653E;&#x3002;</p>
+<h5 id="step3&#x5F55;&#x5236;&#x5B8C;&#x6210;&#x4E0B;&#x8F7D;">Step3:&#x5F55;&#x5236;&#x5B8C;&#x6210;&#x4E0B;&#x8F7D;</h5>
+<p>```shell
+btnDownload.onclick = () =&gt; {
+    var blob = new Blob(buffer,{type:&apos;video/webm&apos;});
+    var url = window.URL.createObjectURL(blob);
+    var a = document.createElement(&apos;a&apos;);</p>
+</blockquote>
+<pre><code>a.href = url;
+a.style.display = &apos;none&apos;;
+a.download = &apos;aaa.webm&apos;;
+a.click();
+</code></pre><p>}
+```</p>
+<blockquote>
+<p>&#x540C;&#x64AD;&#x653E;&#xFF0C;&#x521B;&#x5EFA;blob&#x5904;&#x7406;&#x4E0B;&#x8F7D;&#xFF0C;&#x521B;&#x5EFA;url&#x8FDB;&#x884C;&#x4E0B;&#x8F7D;&#xFF08;&#x7B2C;&#x4E00;&#x6B21;&#x63A5;&#x89E6;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x89C9;&#x5F97;&#x6709;&#x70B9;&#x610F;&#x601D;&#xFF09;&#x3002;&#x5F88;&#x4E45;&#x6CA1;&#x6709;&#x65F6;&#x95F4;&#x597D;&#x597D;&#x5199;&#x4E00;&#x7BC7;blog&#x8BB0;&#x5F55;&#x4E86;&#x3002;webrtc&#x771F;&#x662F;&#x4E00;&#x4E2A;&#x5F3A;&#x5927;&#x6709;&#x610F;&#x601D;&#x7684;&#x4E1C;&#x897F;&#x3002;&#x9644;&#x4E0A;<a href="https://github.com/smileyqp/webrtc/tree/master/webserver" target="_blank">github</a> ,&#x5F53;&#x7136;cert&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x8BC1;&#x4E66;&#x76F8;&#x5173;&#x7684;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x7533;&#x8BF7;&#xFF0C;github&#x4E2D;&#x6CA1;&#x6709;&#x4E0A;&#x4F20;&#x3002;</p>
+</blockquote>
+<h6 id="&#x6548;&#x679C;&#x56FE;">&#x6548;&#x679C;&#x56FE;</h6>
+<p><img src="https://img-blog.csdnimg.cn/20191203133143976.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjczMDU5,size_16,color_FFFFFF,t_70" alt=""></p>
+<h6 id="&#x91C7;&#x96C6;&#x6570;&#x636E;&#x4E0B;&#x8F7D;&#x7684;&#x89C6;&#x9891;&#x6587;&#x4EF6;">&#x91C7;&#x96C6;&#x6570;&#x636E;&#x4E0B;&#x8F7D;&#x7684;&#x89C6;&#x9891;&#x6587;&#x4EF6;</h6>
+<p><img src="https://img-blog.csdnimg.cn/20191203133303355.png" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="【webrtc】webrtc录制基本知识（18）.html" class="navigation navigation-prev " aria-label="Previous page: 【webrtc】webrtc录制基本知识（18）">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="【webrtc】webrtc采集屏幕数据，获取桌面（20）.html" class="navigation navigation-next " aria-label="Next page: 【webrtc】webrtc采集屏幕数据，获取桌面（20）">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"【webrtc】webrtc视频采集、播放、下载（19）","level":"1.1.19","depth":2,"next":{"title":"【webrtc】webrtc采集屏幕数据，获取桌面（20）","level":"1.1.20","depth":2,"path":"doc/【webrtc】webrtc采集屏幕数据，获取桌面（20）.md","ref":"doc/【webrtc】webrtc采集屏幕数据，获取桌面（20）.md","articles":[]},"previous":{"title":"【webrtc】webrtc录制基本知识（18）","level":"1.1.18","depth":2,"path":"doc/【webrtc】webrtc录制基本知识（18）.md","ref":"doc/【webrtc】webrtc录制基本知识（18）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"doc/【webrtc】webrtc视频采集、播放、下载（19）.md","mtime":"2020-01-04T09:15:14.260Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-04T09:39:01.139Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
