@@ -1,0 +1,656 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>【webrtc】PTCPeerConnection（28） · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="【webrtc】PTCPeerConnection（29）.html" />
+    
+    
+    <link rel="prev" href="【webrtc】coturn服务搭建（27）.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    webrtc Introduction
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="【webrtc】背景、应用场景、涉及技术（1）.html">
+            
+                <a href="【webrtc】背景、应用场景、涉及技术（1）.html">
+            
+                    
+                    【webrtc】背景、应用场景、涉及技术(1)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="【webrtc】概述（2）.html">
+            
+                <a href="【webrtc】概述（2）.html">
+            
+                    
+                    【webrtc】概述（2）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="【webrtc】目录结构（3）.html">
+            
+                <a href="【webrtc】目录结构（3）.html">
+            
+                    
+                    【webrtc】目录结构（3）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="【webrtc】运行机制（4）.html">
+            
+                <a href="【webrtc】运行机制（4）.html">
+            
+                    
+                    【webrtc】运行机制（4）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.5" data-path="【webrtc】web服务工作原理（5）.html">
+            
+                <a href="【webrtc】web服务工作原理（5）.html">
+            
+                    
+                    【webrtc】web服务工作原理（5）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.6" data-path="【webrtc】最简单的http服务创建_nodejs（6）.html">
+            
+                <a href="【webrtc】最简单的http服务创建_nodejs（6）.html">
+            
+                    
+                    【webrtc】最简单的http服务创建_nodejs（6）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.7" data-path="【webrtc】创建https服务（7）.html">
+            
+                <a href="【webrtc】创建https服务（7）.html">
+            
+                    
+                    【webrtc】创建https服务（7）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.8" data-path="【webrtc】web服务（8）.html">
+            
+                <a href="【webrtc】web服务（8）.html">
+            
+                    
+                    【webrtc】web服务（8）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.9" data-path="【webrtc】webrtc中音视频设备管理（9）.html">
+            
+                <a href="【webrtc】webrtc中音视频设备管理（9）.html">
+            
+                    
+                    【webrtc】webrtc中音视频设备管理（9）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.10" data-path="【webrtc】webrtc中音视频数据采集（10）.html">
+            
+                <a href="【webrtc】webrtc中音视频数据采集（10）.html">
+            
+                    
+                    【webrtc】webrtc中音视频数据采集（10）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.11" data-path="【webrtc】getUserMedia不同浏览器适配（11）.html">
+            
+                <a href="【webrtc】getUserMedia不同浏览器适配（11）.html">
+            
+                    
+                    【webrtc】getUserMedia不同浏览器适配（11）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.12" data-path="【webrtc】获取设备权限（12）.html">
+            
+                <a href="【webrtc】获取设备权限（12）.html">
+            
+                    
+                    【webrtc】获取设备权限（12）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.13" data-path="【webrtc】视频参数的调整（13）.html">
+            
+                <a href="【webrtc】视频参数的调整（13）.html">
+            
+                    
+                    【webrtc】视频参数的调整（13）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.14" data-path="【webrtc】音频参数的调整（14）.html">
+            
+                <a href="【webrtc】音频参数的调整（14）.html">
+            
+                    
+                    【webrtc】音频参数的调整（14）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.15" data-path="【webrtc】视频特效的添加（15）.html">
+            
+                <a href="【webrtc】视频特效的添加（15）.html">
+            
+                    
+                    【webrtc】视频特效的添加（15）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.16" data-path="【webrtc】从视频中获取图片（16）.html">
+            
+                <a href="【webrtc】从视频中获取图片（16）.html">
+            
+                    
+                    【webrtc】从视频中获取图片（16）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.17" data-path="【webrtc】mediastream（17）.html">
+            
+                <a href="【webrtc】mediastream（17）.html">
+            
+                    
+                    【webrtc】mediastream（17）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.18" data-path="【webrtc】webrtc录制基本知识（18）.html">
+            
+                <a href="【webrtc】webrtc录制基本知识（18）.html">
+            
+                    
+                    【webrtc】webrtc录制基本知识（18）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.19" data-path="【webrtc】webrtc视频采集、播放、下载（19）.html">
+            
+                <a href="【webrtc】webrtc视频采集、播放、下载（19）.html">
+            
+                    
+                    【webrtc】webrtc视频采集、播放、下载（19）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.20" data-path="【webrtc】webrtc采集屏幕数据，获取桌面（20）.html">
+            
+                <a href="【webrtc】webrtc采集屏幕数据，获取桌面（20）.html">
+            
+                    
+                    【webrtc】webrtc采集屏幕数据，获取桌面（20）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.21" data-path="【webrtc】webrtc信令服务器的作用（21）.html">
+            
+                <a href="【webrtc】webrtc信令服务器的作用（21）.html">
+            
+                    
+                    【webrtc】webrtc信令服务器的作用（21）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.22" data-path="【webrtc】webrtc网络传输基本知识（22）.html">
+            
+                <a href="【webrtc】webrtc网络传输基本知识（22）.html">
+            
+                    
+                    【webrtc】webrtc网络传输基本知识（22）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.23" data-path="【webrtc】STUN协议（23）.html">
+            
+                <a href="【webrtc】STUN协议（23）.html">
+            
+                    
+                    【webrtc】STUN协议（23）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.24" data-path="【webrtc】媒体协商的过程（24）.html">
+            
+                <a href="【webrtc】媒体协商的过程（24）.html">
+            
+                    
+                    【webrtc】媒体协商的过程（24）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.25" data-path="【webrtc】webrtc通过peerconnection进行音视频互通（25）.html">
+            
+                <a href="【webrtc】webrtc通过peerconnection进行音视频互通（25）.html">
+            
+                    
+                    【webrtc】webrtc通过peerconnection进行音视频互通（25）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.26" data-path="【webrtc】SDP（26）.html">
+            
+                <a href="【webrtc】SDP（26）.html">
+            
+                    
+                    【webrtc】SDP（26）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.27" data-path="【webrtc】coturn服务搭建（27）.html">
+            
+                <a href="【webrtc】coturn服务搭建（27）.html">
+            
+                    
+                    【webrtc】coturn服务搭建（27）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.1.28" data-path="【webrtc】PTCPeerConnection（28）.html">
+            
+                <a href="【webrtc】PTCPeerConnection（28）.html">
+            
+                    
+                    【webrtc】PTCPeerConnection（28）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.29" data-path="【webrtc】PTCPeerConnection（29）.html">
+            
+                <a href="【webrtc】PTCPeerConnection（29）.html">
+            
+                    
+                    【webrtc】PTCPeerConnection（29）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.30" data-path="【webrtc】客户状态机及处理逻辑（30）.html">
+            
+                <a href="【webrtc】客户状态机及处理逻辑（30）.html">
+            
+                    
+                    【webrtc】客户状态机及处理逻辑（30）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.31" data-path="【webrtc】传输速率的控制（31）.html">
+            
+                <a href="【webrtc】传输速率的控制（31）.html">
+            
+                    
+                    【webrtc】传输速率的控制（31）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.32" data-path="【webrtc】RTP-SRTP（32）.html">
+            
+                <a href="【webrtc】RTP-SRTP（32）.html">
+            
+                    
+                    【webrtc】RTP-SRTP（32）
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >【webrtc】PTCPeerConnection（28）</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x3010;webrtc&#x3011;ptcpeerconnection&#xFF08;28&#xFF09;">&#x3010;webrtc&#x3011;PTCPeerConnection&#xFF08;28&#xFF09;</h1>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="【webrtc】coturn服务搭建（27）.html" class="navigation navigation-prev " aria-label="Previous page: 【webrtc】coturn服务搭建（27）">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="【webrtc】PTCPeerConnection（29）.html" class="navigation navigation-next " aria-label="Next page: 【webrtc】PTCPeerConnection（29）">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"【webrtc】PTCPeerConnection（28）","level":"1.1.28","depth":2,"next":{"title":"【webrtc】PTCPeerConnection（29）","level":"1.1.29","depth":2,"path":"doc/【webrtc】PTCPeerConnection（29）.md","ref":"doc/【webrtc】PTCPeerConnection（29）.md","articles":[]},"previous":{"title":"【webrtc】coturn服务搭建（27）","level":"1.1.27","depth":2,"path":"doc/【webrtc】coturn服务搭建（27）.md","ref":"doc/【webrtc】coturn服务搭建（27）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"doc/【webrtc】PTCPeerConnection（28）.md","mtime":"2020-01-04T09:11:58.026Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-04T09:00:58.239Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
