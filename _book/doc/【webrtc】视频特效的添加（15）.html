@@ -570,6 +570,80 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x3010;webrtc&#x3011;&#x89C6;&#x9891;&#x7279;&#x6548;&#x7684;&#x6DFB;&#x52A0;&#xFF08;15&#xFF09;">&#x3010;webrtc&#x3011;&#x89C6;&#x9891;&#x7279;&#x6548;&#x7684;&#x6DFB;&#x52A0;&#xFF08;15&#xFF09;</h1>
+<p><img src="https://img-blog.csdnimg.cn/20190920112907402.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjczMDU5,size_16,color_FFFFFF,t_70" alt="">
+<img src="https://img-blog.csdnimg.cn/20190920112919378.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjczMDU5,size_16,color_FFFFFF,t_70" alt=""></p>
+<blockquote>
+<p> invert
+ <img src="https://img-blog.csdnimg.cn/2019092012223799.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjczMDU5,size_16,color_FFFFFF,t_70" alt="">
+ none
+ <img src="https://img-blog.csdnimg.cn/20190920122516979.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjczMDU5,size_16,color_FFFFFF,t_70" alt=""></p>
+<p>gray
+<img src="https://img-blog.csdnimg.cn/20190920122407948.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjczMDU5,size_16,color_FFFFFF,t_70" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></p>
+<p>sepia
+<img src="https://img-blog.csdnimg.cn/201909201224431.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjczMDU5,size_16,color_FFFFFF,t_70" alt=""></p>
+</blockquote>
+<pre><code class="lang-shell">//html
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;webrtc test&lt;/title&gt;
+  &lt;style&gt;
+      .none{
+          -webkit-filter:none;
+      }
+      .blur{
+        -webkit-filter:blur(3px);
+      }
+      .grayscale{
+          -webkit-filter:grayscale(1);
+      }
+      .invert{
+          -webkit-filter:invert(1);
+      }
+      .sepia{
+          -webkit-filter:sepia(1);
+      }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;label&gt;audioSource&#x97F3;&#x9891;&#x8F93;&#x5165;: &lt;/label&gt;
+        &lt;select id=&quot;audioSource&quot;&gt;
+    &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;label&gt;audioOutput&#x97F3;&#x9891;&#x8F93;&#x51FA;: &lt;/label&gt;
+        &lt;select id=&quot;audioOutput&quot;&gt;
+    &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;label&gt;videosource: &lt;/label&gt;
+        &lt;select id=&quot;videoSource&quot;&gt;
+    &lt;/select&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;label&gt;filter&#x52A0;&#x4E00;&#x70B9;&#x70B9;&#x7279;&#x6548;: &lt;/label&gt;
+        &lt;select id=&quot;filter&quot;&gt;
+            &lt;option value=&apos;none&apos;&gt;None&lt;/option&gt;
+            &lt;option value=&apos;bluer&apos;&gt;Blur&lt;/option&gt;
+            &lt;option value=&apos;grayscale&apos;&gt;grayscale&lt;/option&gt;
+            &lt;option value=&apos;invert&apos;&gt;invert&lt;/option&gt;
+            &lt;option value=&apos;sepia&apos;&gt;sepia&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+
+
+    &lt;video autoplay playsinline id = &apos;player&apos;&gt;&lt;/video&gt;
+    &lt;script src=&quot;./lib/adapter-latest.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./js/client.js&quot;&gt;&lt;/script&gt;  
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<pre><code class="lang-shell">//&#x6539;&#x53D8;video&#x7684;class&#xFF1B;&#x901A;&#x8FC7;&#x6837;&#x5F0F;&#x6765;&#x8BBE;&#x7F6E;&#x6548;&#x679C;
+filtersSelect.onchange = function(){        //&#x89C6;&#x9891;&#x7279;&#x6548;
+    videoplay.className = filtersSelect.value;
+}
+</code></pre>
 
                                 
                                 </section>
@@ -613,7 +687,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"【webrtc】视频特效的添加（15）","level":"1.1.15","depth":2,"next":{"title":"【webrtc】从视频中获取图片（16）","level":"1.1.16","depth":2,"path":"doc/【webrtc】从视频中获取图片（16）.md","ref":"doc/【webrtc】从视频中获取图片（16）.md","articles":[]},"previous":{"title":"【webrtc】音频参数的调整（14）","level":"1.1.14","depth":2,"path":"doc/【webrtc】音频参数的调整（14）.md","ref":"doc/【webrtc】音频参数的调整（14）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"doc/【webrtc】视频特效的添加（15）.md","mtime":"2020-01-04T09:11:57.998Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-04T09:00:58.239Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"【webrtc】视频特效的添加（15）","level":"1.1.15","depth":2,"next":{"title":"【webrtc】从视频中获取图片（16）","level":"1.1.16","depth":2,"path":"doc/【webrtc】从视频中获取图片（16）.md","ref":"doc/【webrtc】从视频中获取图片（16）.md","articles":[]},"previous":{"title":"【webrtc】音频参数的调整（14）","level":"1.1.14","depth":2,"path":"doc/【webrtc】音频参数的调整（14）.md","ref":"doc/【webrtc】音频参数的调整（14）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"doc/【webrtc】视频特效的添加（15）.md","mtime":"2020-01-04T09:14:25.058Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-04T09:21:07.179Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

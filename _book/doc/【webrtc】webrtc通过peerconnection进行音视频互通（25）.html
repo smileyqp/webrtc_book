@@ -570,6 +570,138 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x3010;webrtc&#x3011;webrtc&#x901A;&#x8FC7;peerconnection&#x8FDB;&#x884C;&#x97F3;&#x89C6;&#x9891;&#x4E92;&#x901A;&#xFF08;25&#xFF09;">&#x3010;webrtc&#x3011;webrtc&#x901A;&#x8FC7;peerconnection&#x8FDB;&#x884C;&#x97F3;&#x89C6;&#x9891;&#x4E92;&#x901A;&#xFF08;25&#xFF09;</h1>
+<p><img src="https://img-blog.csdnimg.cn/20191205162849561.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MjczMDU5,size_16,color_FFFFFF,t_70" alt=""></p>
+<h6 id="js&#x90E8;&#x5206;&#xFF1A;&#x5305;&#x62EC;&#x5A92;&#x4F53;&#x534F;&#x5546;&#x6574;&#x4E2A;&#x6D41;&#x7A0B;&#x7B49;">js&#x90E8;&#x5206;&#xFF1A;&#x5305;&#x62EC;&#x5A92;&#x4F53;&#x534F;&#x5546;&#x6574;&#x4E2A;&#x6D41;&#x7A0B;&#x7B49;</h6>
+<pre><code class="lang-shell">&apos;user strict&apos;
+
+var localvideo = document.querySelector(&apos;video#localvideo&apos;);
+var remoteVideo = document.querySelector(&apos;video#remotevideo&apos;);
+
+var btnStart = document.querySelector(&apos;button#start&apos;);
+var btnCall = document.querySelector(&apos;button#call&apos;);
+var btnHangup = document.querySelector(&apos;button#hangup&apos;);
+
+btnStart.onclick = start;
+btnCall.onclick = call;
+btnHangup.onclick = hangup;
+
+var localStream;
+var pc1,pc2;
+function getMediaStream (stream){
+    localvideo.srcObject = stream;
+    localStream = stream;
+}
+function handleError(err){
+    console.err(&apos;Failed to get stream&apos;)
+}
+
+function start(){
+    if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+        console.error(&apos;the getUserMedia is not support!&apos;)
+        return;
+    }else{
+        var constraints = {
+            video:true,
+            audio:false
+        }
+        navigator.mediaDevices.getUserMedia(constraints).then(getMediaStream).catch(handleError)
+    }
+}
+
+function getRemoteStream(e){
+    remoteVideo.srcObject = e.streams[0];
+}
+
+function handleOfferError(err){
+    console.error(&apos;Failed to create offer&apos;,err)
+}
+
+function handleAnswerError(err){
+    console.log(&quot;Failed to create answer&quot;,err)
+}
+
+function getOffer(desc){
+    pc1.setLocalDescription(desc);
+    //send desc to signal
+    //receive desc from signal
+    pc2.setRemoteDescription(desc);
+
+    pc2.createAnswer()
+        .then(getAnswer)
+        .catch(handleAnswerError);
+}
+
+function getAnswer(desc){
+    pc2.setLocalDescription(desc);
+    //send desc to signal&#x548C;pc1&#x8FDB;&#x884C;&#x4EA4;&#x6362;
+    //pc1 receive desc from signal
+
+    pc1.setRemoteDescription(desc);
+}
+
+function call(){
+    pc1 = new RTCPeerConnection();
+    pc2 = new RTCPeerConnection();
+
+    pc1.onicecandidate = (e) =&gt; {
+        pc2.addIceCandidate(e.candidate)
+    }
+
+    pc2.onicecandidate = (e) =&gt; {
+        pc1.addIceCandidate(e.candidate)
+    }
+
+    pc2.ontrack = getRemoteStream;
+
+    localStream.getTracks().forEach((track) =&gt; {//localStream.getTracks()&#x62FF;&#x5230;&#x97F3;&#x89C6;&#x9891;&#x8F68;&#x9053;&#xFF1B;&#x5C06;&#x672C;&#x5730;&#x91C7;&#x96C6;&#x7684;&#x97F3;&#x89C6;&#x9891;&#x6D41;&#x6DFB;&#x52A0;&#x5230;peerconnection
+        pc1.addTrack(track,localStream);
+    });
+
+    var offerOPtions = {
+        offerToReceiveAudio:0,
+        offerToReceiveVideo:1 
+    }
+    pc1.createOffer(offerOPtions)
+        .then(getOffer)
+        .catch(handleOfferError);
+}
+
+function hangup(){
+    pc1.close();
+
+    pc2.close();
+
+    pc1 = null;
+    pc2 = null;
+}
+</code></pre>
+<h6 id="html&#x90E8;&#x5206;">html&#x90E8;&#x5206;</h6>
+<pre><code class="lang-shell">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;webrtc PeerConnection&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;video id = &apos;localvideo&apos; autoplay playsinline&gt;&lt;/video&gt;
+        &lt;video id = &apos;remotevideo&apos; autoplay playsinline&gt;&lt;/video&gt;
+        &lt;div&gt;
+            &lt;button id = &quot;start&quot;&gt;start&lt;/button&gt;
+            &lt;button id = &quot;call&quot;&gt;Call&lt;/button&gt;
+            &lt;button id = &quot;hangup&quot;&gt;Hang Up&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;./lib/adapter-latest.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;./js/main.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<blockquote>
+<p><a href="https://github.com/smileyqp/webrtc/tree/master/webserver" target="_blank">github&#x5730;&#x5740;</a>,webserver/peerconnection&#x6587;&#x4EF6;&#x5939;&#x4E0B;&#x9762;&#xFF0C;&#x76F4;&#x63A5;<code>node server.js</code>&#x4E4B;&#x540E;&#x6253;&#x5F00;chrome&#x6D4F;&#x89C8;&#x5668;&#x8F93;&#x5165;<code>https://localhost:9999</code>,&#x8FDB;&#x5165;webserver&#x4E0B;&#x9762;&#x7684;peerconnection&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x6253;&#x5F00;index.html&#x3002;&#x6CE8;&#x610F;<code>cert</code>&#x4E0B;&#x9762;&#x7684;&#x4E24;&#x4E2A;&#x8BC1;&#x4E66;&#x9700;&#x8981;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x8BC1;&#x4E66;&#x653E;&#x5230;webserver/cert&#x6587;&#x4EF6;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x7684;&#x8BDD;&#x4E5F;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x6539;&#x5199;https&#x7684;&#x4E3A;http&#x7684;&#x3002;</p>
+</blockquote>
 
                                 
                                 </section>
@@ -613,7 +745,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"【webrtc】webrtc通过peerconnection进行音视频互通（25）","level":"1.1.25","depth":2,"next":{"title":"【webrtc】SDP（26）","level":"1.1.26","depth":2,"path":"doc/【webrtc】SDP（26）.md","ref":"doc/【webrtc】SDP（26）.md","articles":[]},"previous":{"title":"【webrtc】媒体协商的过程（24）","level":"1.1.24","depth":2,"path":"doc/【webrtc】媒体协商的过程（24）.md","ref":"doc/【webrtc】媒体协商的过程（24）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"doc/【webrtc】webrtc通过peerconnection进行音视频互通（25）.md","mtime":"2020-01-04T09:11:58.018Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-04T09:00:58.239Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"【webrtc】webrtc通过peerconnection进行音视频互通（25）","level":"1.1.25","depth":2,"next":{"title":"【webrtc】SDP（26）","level":"1.1.26","depth":2,"path":"doc/【webrtc】SDP（26）.md","ref":"doc/【webrtc】SDP（26）.md","articles":[]},"previous":{"title":"【webrtc】媒体协商的过程（24）","level":"1.1.24","depth":2,"path":"doc/【webrtc】媒体协商的过程（24）.md","ref":"doc/【webrtc】媒体协商的过程（24）.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"doc/【webrtc】webrtc通过peerconnection进行音视频互通（25）.md","mtime":"2020-01-04T09:16:40.520Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-01-04T09:21:07.179Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
